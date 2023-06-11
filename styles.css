@@ -20,6 +20,43 @@ h1, h2 {
     align-items: end;
 }
 
+#lowWidthWarning {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    z-index: 1;
+}
+
+#lowWidthWarning h2 {
+    margin: 0 20px 30px 20px;
+}
+
+#lowWidthWarning button {
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: white;
+    transition: 100ms ease;
+}
+
+#lowWidthWarning button:hover {
+    background-color: rgb(255, 88, 88);
+    color: white;
+    cursor: pointer;
+    transition: 100ms ease;
+}
+
 #keyboard {
     display: flex;
     flex-direction: column;
@@ -68,13 +105,17 @@ h1, h2 {
     animation: shake-key 0.11s ease-in-out alternate-reverse infinite;
 }
 
+#keyboard li.pressed {
+    animation: key-press 0.2s ease-in-out normal infinite;
+}
+
 #count {
     padding: 0 10px;
     animation: none;
 }
 
 #count.animate {
-    animation: number-pulse 0.4s ease-in-out reverse infinite;
+    animation: number-pulse 0.4s ease-in-out normal infinite;
 }
 
 footer {
@@ -106,12 +147,14 @@ footer p {
         transform: rotate(-10deg);
         color: white;
         border: 2px solid blue;
+        scale: 1.2;
     }
 
     100% {
         transform: rotate(10deg);
         color: white;
         border: 2px solid blue;
+        scale: 1.2;
     }
 }
 
@@ -126,6 +169,20 @@ footer p {
 
     100% {
         font-size: 1.5rem;
+    }
+}
+
+@keyframes key-press {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.75;
+    }
+
+    100% {
+        scale: 1;
     }
 }
 
@@ -144,5 +201,11 @@ footer p {
 
     a {
         color: rgb(0, 166, 255);
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    #lowWidthWarning {
+        display: flex;
     }
 }

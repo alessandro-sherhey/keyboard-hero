@@ -2,8 +2,15 @@ const keys = document.getElementsByTagName("li");
 const keypressCount = document.getElementById("count");
 const stringsToChange = document.getElementsByClassName("change");
 
+const widthWarning = document.getElementById("lowWidthWarning");
+const dismissWarningButton = document.getElementById("takeToGame");
+
 let targetedKey = '';
 let count = 0;
+
+dismissWarningButton.addEventListener("click", () => {
+    widthWarning.style.display = "none";
+})
 
 const resetTargetedKey = () => {
     for (const key of keys) {
@@ -35,6 +42,13 @@ const animateKeypressCount = () => {
     }, 400)
 }
 
+const animateKey = (key) => {
+    key.classList.add("pressed");
+    window.setTimeout(() => {
+        key.classList.remove('pressed');
+    }, 200);
+}
+
 const updateKeypressCount = () => {
     count++;
     keypressCount.innerText = count;
@@ -47,8 +61,15 @@ document.addEventListener("keypress", (e) => {
         updateKeypressCount();
         animateKeypressCount();
         targetRandomKey();
+    } else {
+        for (const key of keys) {
+            if (key.innerText == e.key.toUpperCase()) {
+                animateKey(key);
+            }
+        }
     }
 })
 
 const handleKeyClick = () => {
+    
 }
