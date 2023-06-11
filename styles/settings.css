@@ -25,6 +25,10 @@
     animation: close-window 0.3s ease-in-out normal infinite;
 }
 
+#settings div {
+    margin-bottom: 20px;
+}
+
 #closeSettingsButton {
     font-size: var(--button-font-size);
     padding: var(--button-padding);
@@ -47,18 +51,41 @@
 }
 
 
-#colorPalette {
+#colorPalette, #bot {
     display: flex;
     flex-direction: column;
 }
 
-#colorPalette h3 {
+#colorPalette div, #bot div {
+    display: flex;
+}
+
+#colorPalette h3, #bot h3 {
     margin-left: 15px;
 }
 
-#colorPalette div {
-    display: flex;
+#settings button.selected {
+    color: white;
+    background-color: var(--button-selected);
 }
+
+#settings button:hover {
+    cursor: pointer;
+    background-color: var(--button-light-grey-hover);
+    transition: var(--default-transition);
+}
+
+#settings button:active {
+    scale: var(--button-scale-on-click);
+    transition: var(--click-transition);
+}
+
+#settings button.selected:hover {
+    background-color: var(--button-selected);
+}
+
+
+/* Color Palette settings */
 
 #colorPalette button {
     display: flex;
@@ -67,25 +94,6 @@
     border: var(--button-border);
     transform: var(--default-transition);
     margin: 0 15px;
-}
-
-#colorPalette button:hover {
-    cursor: pointer;
-    background-color: var(--button-light-grey-hover);
-    transition: var(--default-transition);
-}
-
-#colorPalette button:active {
-    scale: var(--button-scale-on-click);
-    transition: var(--click-transition);
-}
-
-#colorPalette button.selected {
-    background-color: var(--button-selected);
-}
-
-#colorPalette button.selected:hover {
-    background-color: var(--button-selected);
 }
 
 #colorPalette button div {
@@ -128,17 +136,30 @@
     background-color: var(--vibrant-5);
 }
 
+
+/* Bot settings */
+#bot div button {
+    display: flex;
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+    transform: var(--default-transition);
+    margin: 0 15px;
+}
+
 @media (prefers-color-scheme: dark) {
     #settings {
         background-color: var(--window-background-dark);
     }
 
-    #settings button {
+    #settings button, #settings div button {
         background-color: var(--button-background-color-dark);
         color: white;
     }
 
-    #settings button:hover {
+    #settings button:hover, #bot button:hover {
         background-color: var(--button-dark-grey-hover);
     }
 }

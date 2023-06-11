@@ -83,3 +83,29 @@ const changeColorPalette = (palette) => {
         }
     }
 }
+
+
+// Bot settings
+const enableBotButton = document.getElementById("enableBot");
+const disableBotButton = document.getElementById("disableBot");
+let botIsEnabled = false;
+
+enableBotButton.addEventListener("click", () => {
+    enableBotButton.classList.add("selected");
+    disableBotButton.classList.remove("selected");
+    botIsEnabled = true;
+    pressTargetedKey();
+})
+
+disableBotButton.addEventListener("click", () => {
+    enableBotButton.classList.remove("selected");
+    disableBotButton.classList.add("selected");
+    botIsEnabled = false;
+})
+
+const pressTargetedKey = () => {
+    if (botIsEnabled) {
+        window.setTimeout(pressTargetedKey, 200);
+        document.dispatchEvent(new KeyboardEvent('keypress', {'key': targetedKey}));
+    }
+}

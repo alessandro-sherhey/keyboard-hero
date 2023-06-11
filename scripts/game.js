@@ -1,10 +1,12 @@
 const keys = document.getElementsByTagName("li");
 const keypressCount = document.getElementById("count");
+const keysPerSecond = document.getElementById("kps");
 
 const stringsToChange = document.getElementsByClassName("change");
 
 let targetedKey = '';
 let count = 0;
+let kps = 0;
 
 const resetTargetedKey = () => {
     for (const key of keys) {
@@ -63,6 +65,7 @@ document.addEventListener("keypress", (e) => {
         updateKeypressCount();
         animateKeypressCount();
         targetRandomKey();
+        kps++;
     } else {
         for (const key of keys) {
             if (key.innerText == e.key.toUpperCase()) {
@@ -71,3 +74,14 @@ document.addEventListener("keypress", (e) => {
         }
     }
 })
+
+const updateKPS = () => {
+    keysPerSecond.innerText = kps;
+    kps = 0;
+}
+window.setInterval(updateKPS, 1000);
+
+const enableBot = () => {
+    
+}
+// window.setInterval(enableBot, 100);
