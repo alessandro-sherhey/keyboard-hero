@@ -11,3 +11,6 @@ I used HTML, CSS and "standard" JavaScript. I also grouped the CSS and JS files 
 
 ## Team
 Just me :)
+
+## Website Link
+https://alessandro-sherhey.github.io/keyboard-hero/
