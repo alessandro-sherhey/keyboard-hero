@@ -1,8 +1,8 @@
-const instructions = document.getElementById("howToPlay");
-const dismissButton = document.getElementById("dismissInstructions");
-const openButton = document.getElementById("showHowToPlay");
+const instructions = document.getElementById("instructions");
+const closeInstructionsButton = document.getElementById("closeInstructionsButton");
+const openInstructionsButton = document.getElementById("showInstructions");
 
-openButton.addEventListener("click", () => {
+openInstructionsButton.addEventListener("click", () => {
     instructions.style.display = 'flex';
     instructions.classList.add('open');
     window.setTimeout(() => {
@@ -10,7 +10,7 @@ openButton.addEventListener("click", () => {
     }, 250);
 })
 
-dismissButton.addEventListener("click", () => {
+closeInstructionsButton.addEventListener("click", () => {
     instructions.classList.add('close');
     window.setTimeout(() => {
         instructions.classList.remove('close');

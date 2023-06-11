@@ -1,7 +1,7 @@
 const widthWarning = document.getElementById("lowWidthWarning");
-const dismissWarningButton = document.getElementById("takeToGame");
+const closeWarningButton = document.getElementById("closeWarningButton");
 
-dismissWarningButton.addEventListener("click", () => {
+closeWarningButton.addEventListener("click", () => {
     widthWarning.classList.add('close');
     window.setTimeout(() => {
         widthWarning.classList.remove('close');

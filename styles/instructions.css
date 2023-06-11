@@ -1,4 +1,4 @@
-#howToPlay {
+#instructions {
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -10,22 +10,22 @@
     position: absolute;
     top: 0;
 
-    background-color: rgba(255,255,255,0.1);
+    background-color: var(--window-background-light);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 
     z-index: 1;
 }
 
-#howToPlay.open {
+#instructions.open {
     animation: open-window 0.3s ease-in-out normal infinite;
 }
 
-#howToPlay.close {
+#instructions.close {
     animation: close-window 0.3s ease-in-out normal infinite;
 }
 
-#howToPlay td[data-column="1"] {
+#instructions td[data-column="1"] {
     font-size: 2.5rem;
     font-weight: bold;
     padding: 5px 20px 5px 0;
@@ -33,19 +33,19 @@
     transition: var(--default-transition);
 }
 
-#howToPlay td[data-column="1"]:hover {
+#instructions td[data-column="1"]:hover {
     font-size: 3rem;
     cursor: pointer;
 
     transition: var(--default-transition);
 }
 
-#howToPlay td[data-column="2"] {
+#instructions td[data-column="2"] {
     font-size: 1.2rem;
 }
 
 
-#dismissInstructions {
+#closeInstructionsButton {
     font-size: var(--button-font-size);
     padding: var(--button-padding);
     border-radius: var(--button-border-radius);
@@ -55,13 +55,28 @@
     transition: var(--default-transition);
 }
 
-#dismissInstructions:hover {
+#closeInstructionsButton:hover {
     cursor: pointer;
     background-color: var(--button-green-hover);
     transition: var(--default-transition);
 }
 
-#dismissInstructions:active {
+#closeInstructionsButton:active {
     scale: var(--button-scale-on-click);
     transition: var(--click-transition);
+}
+
+@media (prefers-color-scheme: dark) {
+    #instructions {
+        background-color: var(--window-background-dark);
+    }
+
+    #instructions button {
+        background-color: var(--button-background-color-dark);
+        color: white;
+    }
+
+    #instructions button:hover {
+        color: black;
+    }
 }

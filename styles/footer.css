@@ -41,7 +41,6 @@ footer p i {
 
 footer p a {
     margin-left: 4px;
-    color: black;
 }
 
 footer p:hover {
@@ -83,5 +82,12 @@ footer p:hover i.fa-question, footer p:hover i.fa-star {
 
     100% {
         scale: 0.75;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    footer {
+        color: white;
+        background-color: var(--level1-background-dark);
     }
 }

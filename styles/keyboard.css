@@ -1,11 +1,14 @@
 #keyboard {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 80vw;
     min-width: 650px;
     background-color: var(--level1-background-light);
-    margin: 50px 0 30px 0;
+    margin: 50px 10vw 30px 10vw;
     padding: 30px 0;
+    border-radius: 25px;
+
+    transition: var(--keyboard-transition);
 }
 
 #keyboard ul.row {
@@ -84,13 +87,20 @@
 
 @media (prefers-color-scheme: dark) {
     #keyboard {
-        background-color: rgb(25, 25, 25);
+        background-color: var(--level1-background-dark);
     }
     #keyboard li {
         color: black;
     }
 }
 
+@media only screen and (max-width: 1300px) {
+    #keyboard {
+        width: 100vw;
+        margin: 50px 0 30px 0;
+        border-radius: 0;
+    }
+}
 
 @media only screen and (max-width: 1000px) {
     li.hide {

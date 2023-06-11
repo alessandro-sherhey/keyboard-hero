@@ -1,0 +1,144 @@
+#settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+
+    background-color: var(--window-background-light);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    z-index: 1;
+}
+
+#settings.open {
+    animation: open-window 0.3s ease-in-out normal infinite;
+}
+
+#settings.close {
+    animation: close-window 0.3s ease-in-out normal infinite;
+}
+
+#closeSettingsButton {
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--button-background-color);
+    margin: var(--button-margin);
+    transition: var(--default-transition);
+}
+
+#closeSettingsButton:hover {
+    cursor: pointer;
+    background-color: var(--button-red-hover);
+    transition: var(--default-transition);
+}
+
+#closeSettingsButton:active {
+    scale: var(--button-scale-on-click);
+    transition: var(--click-transition);
+}
+
+
+#colorPalette {
+    display: flex;
+    flex-direction: column;
+}
+
+#colorPalette h3 {
+    margin-left: 15px;
+}
+
+#colorPalette div {
+    display: flex;
+}
+
+#colorPalette button {
+    display: flex;
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+    transform: var(--default-transition);
+    margin: 0 15px;
+}
+
+#colorPalette button:hover {
+    cursor: pointer;
+    background-color: var(--button-light-grey-hover);
+    transition: var(--default-transition);
+}
+
+#colorPalette button:active {
+    scale: var(--button-scale-on-click);
+    transition: var(--click-transition);
+}
+
+#colorPalette button.selected {
+    background-color: var(--button-selected);
+}
+
+#colorPalette button.selected:hover {
+    background-color: var(--button-selected);
+}
+
+#colorPalette button div {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+#colorPalette button#originalPalette div[data-index="1"] {
+    background-color: var(--original-1);
+}
+#colorPalette button#originalPalette div[data-index="2"] {
+    background-color: var(--original-2);
+}
+#colorPalette button#originalPalette div[data-index="3"] {
+    background-color: var(--original-3);
+}
+#colorPalette button#originalPalette div[data-index="4"] {
+    background-color: var(--original-4);
+}
+#colorPalette button#originalPalette div[data-index="5"] {
+    background-color: var(--original-5);
+}
+
+#colorPalette button#vibrantPalette div[data-index="1"] {
+    background-color: var(--vibrant-1);
+}
+#colorPalette button#vibrantPalette div[data-index="2"] {
+    background-color: var(--vibrant-2);
+}
+#colorPalette button#vibrantPalette div[data-index="3"] {
+    background-color: var(--vibrant-3);
+}
+#colorPalette button#vibrantPalette div[data-index="4"] {
+    background-color: var(--vibrant-4);
+}
+#colorPalette button#vibrantPalette div[data-index="5"] {
+    background-color: var(--vibrant-5);
+}
+
+@media (prefers-color-scheme: dark) {
+    #settings {
+        background-color: var(--window-background-dark);
+    }
+
+    #settings button {
+        background-color: var(--button-background-color-dark);
+        color: white;
+    }
+
+    #settings button:hover {
+        background-color: var(--button-dark-grey-hover);
+    }
+}
