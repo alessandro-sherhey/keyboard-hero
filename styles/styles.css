@@ -4,6 +4,26 @@
     --original-3: rgb(240, 146, 53);
     --original-4: rgb(249, 217, 73);
     --original-5: rgb(238, 230, 151);
+
+    --default-transition: 100ms ease;
+    --click-transition: 100ms ease;
+    --window-transition: 500ms ease-in-out;
+
+    /* Button variables */
+    --button-font-size: 1.3rem;
+    --button-margin: 20px 0 0 0;
+    --button-padding: 8px 15px;
+    --button-border-radius: 8px;
+    --button-border: 1px solid rgba(0, 0, 0, 0.1);
+    --button-background-color: white;
+
+    --button-red-hover: rgb(255, 88, 88);
+    --button-green-hover: rgb(13, 255, 0);
+
+    --button-scale-on-click: 0.9;
+
+    --level1-background-light: rgb(250, 250, 250);
+    --level2-background-light: rgb(240, 240, 240);
 }
 
 body {
@@ -14,58 +34,35 @@ body {
 
 h1, h2 {
     display: flex;
-    height: 2rem;
+    font-size: 2rem;
     justify-content: center;
     align-items: end;
 }
 
+#counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#counter p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
 #count {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
     padding: 0 10px;
     animation: none;
+    font-weight: bold;
 }
 
 #count.animate {
     animation: number-pulse 0.4s ease-in-out normal infinite;
-}
-
-footer {
-    display: flex;
-    width: 100vw;
-    flex-direction: row;
-    position: absolute;
-    bottom: 0;
-}
-
-footer div.left {
-    display: flex;
-    width: 50%;
-    align-self: flex-start;
-}
-
-footer div.right {
-    display: flex;
-    width: 50%;
-    justify-content: right;
-}
-
-footer p {
-    margin: 0 10px 15px 10px;
-}
-
-@keyframes shake-key {
-    0% {
-        transform: rotate(-10deg);
-        color: white;
-        border: 2px solid blue;
-        scale: 1.2;
-    }
-
-    100% {
-        transform: rotate(10deg);
-        color: white;
-        border: 2px solid blue;
-        scale: 1.2;
-    }
 }
 
 @keyframes number-pulse {
@@ -79,6 +76,30 @@ footer p {
 
     100% {
         font-size: 1.5rem;
+    }
+}
+
+@keyframes open-window {
+    0% {
+        border-radius: 50px;
+        scale: 0.1;
+    }
+
+    100% {
+        border-radius: 0;
+        scale: 1;
+    }
+}
+
+@keyframes close-window {
+    0% {
+        border-radius: 0;
+        scale: 1;
+    }
+
+    100% {
+        border-radius: 50px;
+        scale: 0.1;
     }
 }
 

@@ -1,54 +1,67 @@
-#lowWidthWarning {
+#howToPlay {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
 
-    position: absolute;
     width: 100vw;
     height: 100vh;
 
+    position: absolute;
+    top: 0;
+
+    background-color: rgba(255,255,255,0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    
+
     z-index: 1;
-    animation: open-window 0.3s ease-in-out normal;
 }
 
-#lowWidthWarning.close {
+#howToPlay.open {
+    animation: open-window 0.3s ease-in-out normal infinite;
+}
+
+#howToPlay.close {
     animation: close-window 0.3s ease-in-out normal infinite;
 }
 
-#lowWidthWarning p {
-    margin: 0 20px 30px 20px;
-    font-size: 1.5rem;
+#howToPlay td[data-column="1"] {
+    font-size: 2.5rem;
     font-weight: bold;
+    padding: 5px 20px 5px 0;
+
+    transition: var(--default-transition);
 }
 
-#lowWidthWarning button {
+#howToPlay td[data-column="1"]:hover {
+    font-size: 3rem;
+    cursor: pointer;
+
+    transition: var(--default-transition);
+}
+
+#howToPlay td[data-column="2"] {
+    font-size: 1.2rem;
+}
+
+
+#dismissInstructions {
     font-size: var(--button-font-size);
     padding: var(--button-padding);
     border-radius: var(--button-border-radius);
     border: var(--button-border);
     background-color: var(--button-background-color);
+    margin: var(--button-margin);
     transition: var(--default-transition);
 }
 
-#lowWidthWarning button:hover {
-    background-color: var(--button-red-hover);
-    color: white;
+#dismissInstructions:hover {
     cursor: pointer;
+    background-color: var(--button-green-hover);
     transition: var(--default-transition);
 }
 
-#lowWidthWarning button:active {
+#dismissInstructions:active {
     scale: var(--button-scale-on-click);
     transition: var(--click-transition);
-}
-
-@media only screen and (max-width: 680px) {
-    #lowWidthWarning {
-        display: flex;
-    }
 }

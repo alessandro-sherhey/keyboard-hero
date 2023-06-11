@@ -33,7 +33,7 @@ const animateKeypressCount = () => {
     keypressCount.classList.add('animate');
     window.setTimeout(() => {
         keypressCount.classList.remove('animate');
-    }, 400)
+    }, 300)
 }
 
 const animateKey = (key) => {

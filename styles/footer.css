@@ -1,0 +1,87 @@
+footer {
+    display: flex;
+    width: 100vw;
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+
+    background-color: var(--level2-background-light);
+}
+
+footer div.left {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-self: flex-start;
+    align-items: center;
+}
+
+footer div.right {
+    display: flex;
+    width: 50%;
+    justify-content: right;
+    align-items: center;
+}
+
+footer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    transition: var(--default-transition);
+}
+
+footer p i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: var(--default-transition);
+}
+
+footer p a {
+    margin-left: 4px;
+    color: black;
+}
+
+footer p:hover {
+    font-size: 1.2rem;
+    transition: var(--default-transition);
+    cursor: pointer;
+}
+
+footer p:hover i {
+    font-size: 1.5rem;
+}
+
+footer p:hover i.fa-gear {
+    animation: settings-rotate 1.5s ease-in-out normal infinite;
+}
+
+footer p:hover i.fa-question, footer p:hover i.fa-star {
+    animation: pulse 1s ease-in-out alternate-reverse infinite;
+}
+
+@keyframes settings-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 0.75;
+    }
+}
