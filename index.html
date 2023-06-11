@@ -3,8 +3,12 @@
     <head>
         <title>Keyboard Hero</title>
         
-        <link rel="stylesheet" type="text/css" href="./styles.css">
-        <script src="script.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="./styles/lowWidthWarning.css">
+        <link rel="stylesheet" type="text/css" href="./styles/keyboard.css">
+
+        <script src="./scripts/game.js" defer></script>
+        <script src="./scripts/widthWarning.js" defer></script>
 
         <script src="https://kit.fontawesome.com/0e8fa86f7b.js" crossorigin="anonymous"></script>
 
@@ -25,10 +29,15 @@
             </button>
         </div>
 
+        <div id="howToPlay">
+
+        </div>
+
         <h1>Keyboard Hero</h1>
         
         <div id="keyboard">
             <ul class="row">
+                <li data-color="1" class="hide">\</li>
                 <li data-color="1">1</li>
                 <li data-color="2">2</li>
                 <li data-color="3">3</li>
@@ -39,8 +48,10 @@
                 <li data-color="3">8</li>
                 <li data-color="2">9</li>
                 <li data-color="1">0</li>
+                <li data-color="1" class="hide">'</li>
             </ul>
             <ul class="row">
+                <li data-color="1" class="hide">Tab <i class="fa-solid fa-arrow-right-long"></i></li>
                 <li data-color="1">Q</li>
                 <li data-color="2">W</li>
                 <li data-color="3">E</li>
@@ -51,8 +62,10 @@
                 <li data-color="3">I</li>
                 <li data-color="2">O</li>
                 <li data-color="1">P</li>
+                <li data-color="1" class="hide">è</li>
             </ul>
             <ul class="row">
+                <li data-color="1" class="hide">Shift Lock <i class="fa-solid fa-up-long"></i></li>
                 <li data-color="1">A</li>
                 <li data-color="2">S</li>
                 <li data-color="3">D</li>
@@ -62,8 +75,11 @@
                 <li data-color="4">J</li>
                 <li data-color="3">K</li>
                 <li data-color="2">L</li>
+                <li data-color="1" class="hide">ò</li>
             </ul>
             <ul class="row">
+                <li data-color="1" class="hide">Shift <i class="fa-solid fa-arrow-up"></i></li>
+                <li data-color="1" class="hide">&lt;</li>
                 <li data-color="1">Z</li>
                 <li data-color="2">X</li>
                 <li data-color="3">C</li>
@@ -71,6 +87,9 @@
                 <li data-color="5">B</li>
                 <li data-color="5">N</li>
                 <li data-color="4">M</li>
+                <li data-color="3" class="hide">,</li>
+                <li data-color="2" class="hide">.</li>
+                <li data-color="1" class="hide">-</li>
             </ul>
         </div>
         <div id="counter">

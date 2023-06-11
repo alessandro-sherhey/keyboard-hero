@@ -1,0 +1,81 @@
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-width: 650px;
+    background-color: rgb(250, 250, 250);
+}
+
+#keyboard ul.row {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+#keyboard li {
+    list-style: none;
+    padding: 8px 23px;
+    margin: 7px 10px;
+    border-radius: 5px;
+}
+
+#keyboard li[data-color="1"] {
+    background-color: var(--original-1);
+    border: 2px solid var(--original-1);
+}
+#keyboard li[data-color="2"] {
+    background-color: var(--original-2);
+    border: 2px solid var(--original-2);
+}
+#keyboard li[data-color="3"] {
+    background-color: var(--original-3);
+    border: 2px solid var(--original-3);
+}
+#keyboard li[data-color="4"] {
+    background-color: var(--original-4);
+    border: 2px solid var(--original-4);
+}
+#keyboard li[data-color="5"] {
+    background-color: var(--original-5);
+    border: 2px solid var(--original-5);
+}
+
+#keyboard li.targeted {
+    animation: shake-key 0.11s ease-in-out alternate-reverse infinite;
+}
+
+#keyboard li.pressed {
+    animation: key-press 0.2s ease-in-out normal infinite;
+}
+
+@keyframes key-press {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.75;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #keyboard {
+        background-color: rgb(25, 25, 25);
+    }
+    #keyboard li {
+        color: black;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    li.hide {
+        display: none;
+    }
+}
