@@ -218,7 +218,7 @@
         color: white;
     }
 
-    #settings button:hover, #bot button:hover {
+    #settings div button:hover, #bot div button:hover {
         background-color: var(--button-dark-grey-hover);
     }
 }
