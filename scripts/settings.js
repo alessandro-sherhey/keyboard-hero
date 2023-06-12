@@ -5,6 +5,9 @@ if (!localStorage.getItem("palette")) {
 if (!localStorage.getItem("bot")) {
     localStorage.setItem("bot", false);
 }
+if (!localStorage.getItem("botFrequency")) {
+    localStorage.setItem("botFrequency", 200);
+}
 if (!localStorage.getItem("showCount")) {
     localStorage.setItem("showCount", true);
 }
@@ -145,6 +148,68 @@ const changeColorPalette = () => {
 changeColorPalette();
 
 
+// >> Bot Frequency settings
+const botFrequencyContainer = document.getElementById("botFrequency");
+const frequency100msButton = document.getElementById("100ms");
+const frequency200msButton = document.getElementById("200ms");
+const frequency500msButton = document.getElementById("500ms");
+const frequencyWarningTooltip = document.getElementById("highFrequencyWarning");
+let frequency = localStorage.getItem("botFrequency");
+
+frequency100msButton.addEventListener("click", () => {
+    frequency100msButton.classList.add("selected");
+    frequency200msButton.classList.remove("selected");
+    frequency500msButton.classList.remove("selected");
+
+    frequency = 100;
+    localStorage.setItem("botFrequency", 100);
+})
+
+frequency200msButton.addEventListener("click", () => {
+    frequency100msButton.classList.remove("selected");
+    frequency200msButton.classList.add("selected");
+    frequency500msButton.classList.remove("selected");
+
+    frequency = 200;
+    localStorage.setItem("botFrequency", 200);
+})
+
+frequency500msButton.addEventListener("click", () => {
+    frequency100msButton.classList.remove("selected");
+    frequency200msButton.classList.remove("selected");
+    frequency500msButton.classList.add("selected");
+
+    frequency = 500;
+    localStorage.setItem("botFrequency", 500);
+})
+
+const changeBotFrequencyButtonsAppearance = () => {
+    if (frequency == "100") {
+        frequency100msButton.classList.add("selected");
+        frequency200msButton.classList.remove("selected");
+        frequency500msButton.classList.remove("selected");
+    } else if (frequency == "200") {
+        frequency100msButton.classList.remove("selected");
+        frequency200msButton.classList.add("selected");
+        frequency500msButton.classList.remove("selected");
+    } else if (frequency == "500") {
+        frequency100msButton.classList.remove("selected");
+        frequency200msButton.classList.remove("selected");
+        frequency500msButton.classList.add("selected");
+    }
+}
+changeBotFrequencyButtonsAppearance();
+
+frequency100msButton.addEventListener("mousemove", (e) => {
+    frequencyWarningTooltip.style.display = 'flex';
+    frequencyWarningTooltip.style.top = `${e.pageY - 30}px`;
+    frequencyWarningTooltip.style.left = `${e.pageX}px`;
+})
+
+frequency100msButton.addEventListener("mouseleave", () => {
+    frequencyWarningTooltip.style.display = 'none';
+})
+
 // >> Bot settings
 const enableBotButton = document.getElementById("enableBot");
 const disableBotButton = document.getElementById("disableBot");
@@ -153,6 +218,10 @@ let botIsEnabled = localStorage.getItem("bot");
 enableBotButton.addEventListener("click", () => {
     enableBotButton.classList.add("selected");
     disableBotButton.classList.remove("selected");
+
+    botFrequencyContainer.style.opacity = '1';
+    botFrequencyContainer.style.pointerEvents = 'all';
+
     botIsEnabled = true;
     localStorage.setItem("bot", true);
     pressTargetedKey();
@@ -161,13 +230,17 @@ enableBotButton.addEventListener("click", () => {
 disableBotButton.addEventListener("click", () => {
     enableBotButton.classList.remove("selected");
     disableBotButton.classList.add("selected");
+
+    botFrequencyContainer.style.opacity = '0.5';
+    botFrequencyContainer.style.pointerEvents = 'none';
+
     botIsEnabled = false;
     localStorage.setItem("bot", false);
 })
 
 const pressTargetedKey = () => {
     if (botIsEnabled) {
-        window.setTimeout(pressTargetedKey, 200);
+        window.setTimeout(pressTargetedKey, frequency);
         document.dispatchEvent(new KeyboardEvent('keypress', {'key': targetedKey}));
     }
 }
@@ -176,9 +249,16 @@ const changeBotButtonsAppearance = () => {
     if (botIsEnabled == 'false') {
         enableBotButton.classList.remove("selected");
         disableBotButton.classList.add("selected");
+
+        botFrequencyContainer.style.opacity = '0.5';
+        botFrequencyContainer.style.pointerEvents = 'none';
     } else {
         enableBotButton.classList.add("selected");
         disableBotButton.classList.remove("selected");
+
+        botFrequencyContainer.style.opacity = '1';
+        botFrequencyContainer.style.pointerEvents = 'all';
+
         pressTargetedKey();
     }
 }
