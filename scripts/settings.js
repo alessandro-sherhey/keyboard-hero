@@ -1,9 +1,52 @@
+// Initializes the localStorage API
+if (!localStorage.getItem("palette")) {
+    localStorage.setItem("palette", 1);
+}
+if (!localStorage.getItem("bot")) {
+    localStorage.setItem("bot", false);
+}
+if (!localStorage.getItem("showCount")) {
+    localStorage.setItem("showCount", true);
+}
+if(!localStorage.getItem("showKPS")) {
+    localStorage.setItem("showKPS", true);
+}
+if (!localStorage.getItem("footer")) {
+    localStorage.setItem("footer", 1);
+}
+
+// Manages the "Clear Settings" button
+const clearSettingsButton = document.getElementById("clearSettings");
+let isClicked = false;
+
+const clearSettings = () => {
+    if (!isClicked) {
+        isClicked = true;
+        clearSettingsButton.innerText = 'Cleared! Refresh the page.';
+        localStorage.clear();
+        setTimeout(clearSettings, 2500);
+    } else {
+        isClicked = false;
+        clearSettingsButton.innerHTML = 'Clear your settings...';
+    }
+}
+clearSettingsButton.addEventListener("click", clearSettings);
+
 // Manages opening and closing of the window
 const settings = document.getElementById("settings");
 const closeSettingsButton = document.getElementById("closeSettingsButton");
 const openSettingsButton = document.getElementById("showSettingsButton");
+const openSettingsButtonTwo = document.getElementById("showSettingsButtonTwo");
 
 openSettingsButton.addEventListener("click", () => {
+    settings.style.display = 'flex';
+    settings.classList.add('open');
+    window.setTimeout(() => {
+        settings.classList.remove('open');
+    }, 250);
+})
+
+openSettingsButtonTwo.addEventListener("click", () => {
     settings.style.display = 'flex';
     settings.classList.add('open');
     window.setTimeout(() => {
@@ -29,21 +72,37 @@ const originalPaletteButton = document.getElementById("originalPalette");
 const vibrantPaletteButton = document.getElementById("vibrantPalette");
 
 const listElements = document.querySelectorAll('li');
+let palette = localStorage.getItem("palette");
+
+const changePaletteButtonsAppearance = () => {
+    if (palette == 1) {
+        originalPaletteButton.classList.add("selected");
+        vibrantPaletteButton.classList.remove("selected");
+    } else if (palette == 2) {
+        originalPaletteButton.classList.remove("selected");
+        vibrantPaletteButton.classList.add("selected");
+    }
+}
+changePaletteButtonsAppearance();
 
 originalPaletteButton.addEventListener("click", () => {
     originalPaletteButton.classList.add("selected");
     vibrantPaletteButton.classList.remove("selected");
-    changeColorPalette(1);
+    palette = 1;
+    localStorage.setItem("palette", 1);
+    changeColorPalette();
 })
 
 vibrantPaletteButton.addEventListener("click", () => {
     originalPaletteButton.classList.remove("selected");
     vibrantPaletteButton.classList.add("selected");
-    changeColorPalette(2);
+    palette = 2;
+    localStorage.setItem("palette", 2);
+    changeColorPalette();
 })
 
-const changeColorPalette = (palette) => {
-    if (palette === 1) {
+const changeColorPalette = () => {
+    if (palette == 1) {
         for (const element of listElements) {
             if (element.getAttribute("data-color") === "1") {
                 element.style.backgroundColor = style.getPropertyValue('--original-1');
@@ -62,7 +121,7 @@ const changeColorPalette = (palette) => {
                 element.style.borderColor = style.getPropertyValue('--original-5');
             }
         }
-    } else if (palette === 2) {
+    } else if (palette == 2) {
         for (const element of listElements) {
             if (element.getAttribute("data-color") === "1") {
                 element.style.backgroundColor = style.getPropertyValue('--vibrant-1');
@@ -83,17 +142,19 @@ const changeColorPalette = (palette) => {
         }
     }
 }
+changeColorPalette();
 
 
-// Bot settings
+// >> Bot settings
 const enableBotButton = document.getElementById("enableBot");
 const disableBotButton = document.getElementById("disableBot");
-let botIsEnabled = false;
+let botIsEnabled = localStorage.getItem("bot");
 
 enableBotButton.addEventListener("click", () => {
     enableBotButton.classList.add("selected");
     disableBotButton.classList.remove("selected");
     botIsEnabled = true;
+    localStorage.setItem("bot", true);
     pressTargetedKey();
 })
 
@@ -101,6 +162,7 @@ disableBotButton.addEventListener("click", () => {
     enableBotButton.classList.remove("selected");
     disableBotButton.classList.add("selected");
     botIsEnabled = false;
+    localStorage.setItem("bot", false);
 })
 
 const pressTargetedKey = () => {
@@ -109,3 +171,143 @@ const pressTargetedKey = () => {
         document.dispatchEvent(new KeyboardEvent('keypress', {'key': targetedKey}));
     }
 }
+
+const changeBotButtonsAppearance = () => {
+    if (botIsEnabled == 'false') {
+        enableBotButton.classList.remove("selected");
+        disableBotButton.classList.add("selected");
+    } else {
+        enableBotButton.classList.add("selected");
+        disableBotButton.classList.remove("selected");
+        pressTargetedKey();
+    }
+}
+changeBotButtonsAppearance();
+
+
+// >> Customize Interface settings
+const keyCountButton = document.getElementById("showKeyCount");
+const kpsButton = document.getElementById("showKPS");
+
+const clickedKeysCounter = document.getElementById("counter");
+const keysPerSecondCounter = document.getElementById("keysPerSecond");
+
+let showKeyCount = localStorage.getItem("showCount");
+let showKPS = localStorage.getItem("showKPS");
+
+keyCountButton.addEventListener("click", () => {
+    if (showKeyCount === true) {
+        showKeyCount = false;
+        localStorage.setItem("showCount", false);
+
+        keyCountButton.classList.remove("selected");
+        clickedKeysCounter.style.display = 'none';
+    } else {
+        showKeyCount = true;
+        localStorage.setItem("showCount", true);
+        keyCountButton.classList.add("selected");
+        clickedKeysCounter.style.display = 'flex';
+    }
+})
+
+kpsButton.addEventListener("click", () => {
+    if (showKPS === true) {
+        showKPS = false;
+        localStorage.setItem("showKPS", false);
+
+        kpsButton.classList.remove("selected");
+        keysPerSecondCounter.style.display = 'none';
+    } else {
+        showKPS = true;
+        localStorage.setItem("showKPS", true);
+
+        kpsButton.classList.add("selected");
+        keysPerSecondCounter.style.display = 'flex';
+    }
+})
+
+changeCustomizeInterfaceButtonsAppearance = () => {
+    if (showKeyCount == 'true') {
+        showKeyCount = true;
+        keyCountButton.classList.add("selected");
+        clickedKeysCounter.style.display = 'flex';
+    } else {
+        showKeyCount = false;
+        keyCountButton.classList.remove("selected");
+        clickedKeysCounter.style.display = 'none';
+    }
+
+    if (showKPS == 'true') {
+        showKPS = true;
+        kpsButton.classList.add("selected");
+        keysPerSecondCounter.style.display = 'flex';
+    } else {
+        showKPS = false;
+        kpsButton.classList.remove("selected");
+        keysPerSecondCounter.style.display = 'none';
+    }
+}
+changeCustomizeInterfaceButtonsAppearance();
+
+// >> Footer Selection settings
+const standardFooterButton = document.getElementById("showStandardFooter");
+const minimalFooterButton = document.getElementById("showMinimalFooter");
+
+const footerContainer = document.querySelector("footer");
+const standardFooter = document.getElementById("standardFooter");
+const minimalFooter = document.getElementById("minimalFooter");
+
+let footer = localStorage.getItem("footer"); // 1: standard, 2: minimal
+
+standardFooterButton.addEventListener("click", () => {
+    footer = 1;
+    localStorage.setItem("footer", 1);
+
+    standardFooterButton.classList.add("selected");
+    minimalFooterButton.classList.remove("selected");
+
+    footerContainer.style.width = '100vw';
+    footerContainer.style.justifyContent = 'auto';
+    footerContainer.style.borderTopRightRadius = '0';
+
+    standardFooter.style.display = 'flex';
+    minimalFooter.style.display = 'none';
+})
+
+minimalFooterButton.addEventListener("click", () => {
+    footer = 2;
+    localStorage.setItem("footer", 2);
+
+    standardFooterButton.classList.remove("selected");
+    minimalFooterButton.classList.add("selected");
+
+    footerContainer.style.width = '120px';
+    footerContainer.style.justifyContent = 'space-around';
+    footerContainer.style.borderTopRightRadius = '15px';
+    standardFooter.style.display = 'none';
+    minimalFooter.style.display = 'flex';
+})
+
+const changeFooterButtonAppearance = () => {
+    if (footer == 1) {
+        standardFooterButton.classList.add("selected");
+        minimalFooterButton.classList.remove("selected");
+
+        footerContainer.style.width = '100vw';
+        footerContainer.style.justifyContent = 'auto';
+        footerContainer.style.borderTopRightRadius = '0';
+
+        standardFooter.style.display = 'flex';
+        minimalFooter.style.display = 'none';
+    } else {
+        standardFooterButton.classList.remove("selected");
+        minimalFooterButton.classList.add("selected");
+
+        footerContainer.style.width = '120px';
+        footerContainer.style.justifyContent = 'space-around';
+        footerContainer.style.borderTopRightRadius = '15px';
+        standardFooter.style.display = 'none';
+        minimalFooter.style.display = 'flex';
+    }
+}
+changeFooterButtonAppearance();

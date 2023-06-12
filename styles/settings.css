@@ -41,6 +41,7 @@
 
 #closeSettingsButton:hover {
     cursor: pointer;
+    color: white;
     background-color: var(--button-red-hover);
     transition: var(--default-transition);
 }
@@ -50,32 +51,65 @@
     transition: var(--click-transition);
 }
 
+#settings p {
+    opacity: 0.5;
+    margin-top: 20px;
+}
 
-#colorPalette, #bot {
+#settings p i {
+    margin-right: 7px;
+}
+
+#settings #clearSettings {
+    display: flex;
+    justify-content: center;
+
+    text-decoration: underline;
+    transition: var(--default-transition);
+}
+
+#settings #clearSettings:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--default-transition);
+}
+
+#settings #clearSettings:active {
+    font-size: 0.8rem;
+    transition: var(--click-transition);
+}
+
+
+
+
+/* Properties shared between various settings */
+#colorPalette, #bot, #customizeInterface, #footerSelection {
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
-#colorPalette div, #bot div {
+#colorPalette div, #bot div, #customizeInterface div, #footerSelection div {
     display: flex;
 }
 
-#colorPalette h3, #bot h3 {
+#colorPalette h3, #bot h3, #customizeInterface h3, #footerSelection h3 {
     margin-left: 15px;
+    margin-bottom: 7px;
 }
 
-#settings button.selected {
+#settings div button.selected {
     color: white;
     background-color: var(--button-selected);
 }
 
-#settings button:hover {
+#settings div button:hover {
     cursor: pointer;
     background-color: var(--button-light-grey-hover);
     transition: var(--default-transition);
 }
 
-#settings button:active {
+#settings div button:active {
     scale: var(--button-scale-on-click);
     transition: var(--click-transition);
 }
@@ -86,7 +120,6 @@
 
 
 /* Color Palette settings */
-
 #colorPalette button {
     display: flex;
     border-radius: var(--button-border-radius);
@@ -139,6 +172,32 @@
 
 /* Bot settings */
 #bot div button {
+    display: flex;
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+    transform: var(--default-transition);
+    margin: 0 15px;
+}
+
+
+/* Customize Interface settings */
+#customizeInterface div button {
+    display: flex;
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+    transform: var(--default-transition);
+    margin: 0 15px;
+}
+
+
+/* Customize Interface settings */
+#footerSelection div button {
     display: flex;
     font-size: var(--button-font-size);
     padding: var(--button-padding);

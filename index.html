@@ -91,9 +91,28 @@
                     <button id="enableBot">Enabled</button>
                 </div>
             </div>
+            <div id="customizeInterface">
+                <h3>Show</h3>
+                <div>
+                    <button class="selected" id="showKeyCount">Key Count</button>
+                    <button class="selected" id="showKPS">Keys per second</button>
+                </div>
+            </div>
+            <div id="footerSelection">
+                <h3>Footer</h3>
+                <div>
+                    <button class="selected" id="showStandardFooter">Standard</button>
+                    <button id="showMinimalFooter">Minimal</button>
+                </div>
+            </div>
             <button id="closeSettingsButton">
                 Close
             </button>
+            <p>
+                <i class="fa-solid fa-lock"></i>
+                The game stores only the data necessary to save your settings.
+                <span id="clearSettings">Clear your settings...</span>
+            </p>
         </div>
 
         <div id="game">
@@ -162,12 +181,18 @@
                 <p>Keys per second: <span id="kps">0</span></p>
             </div>
             <footer>
-                <div class="left">
-                    <p id="showInstructions"><i class="fa-solid fa-question"></i> How to play</p>
-                    <p id="showSettingsButton"><i class="fa-solid fa-gear"></i> Settings</p>
+                <div id="standardFooter">
+                    <div class="left">
+                        <p id="showInstructionsButton"><i class="fa-solid fa-question"></i> How to play</p>
+                        <p id="showSettingsButton"><i class="fa-solid fa-gear"></i> Settings</p>
+                    </div>
+                    <div class="right">
+                        <p><i class="fa-solid fa-star"></i> Inspired by <a href="https://codepen.io/evilpaper/pen/dyyZjLQ" target="_blank">Keyboard Hero on Codepen</a></p>
+                    </div>
                 </div>
-                <div class="right">
-                    <p><i class="fa-solid fa-star"></i> Inspired by <a href="https://codepen.io/evilpaper/pen/dyyZjLQ" target="_blank">Keyboard Hero on Codepen</a></p>
+                <div id="minimalFooter">
+                    <i class="fa-solid fa-question" id="showInstructionsButtonTwo"></i>
+                    <i class="fa-solid fa-gear" id="showSettingsButtonTwo"></i>
                 </div>
             </footer>
         </div>

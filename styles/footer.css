@@ -10,6 +10,11 @@ footer {
     background-color: var(--level2-background-light);
 }
 
+footer #standardFooter {
+    display: flex;
+    width: 100vw;
+}
+
 footer div.left {
     display: flex;
     width: 50%;
@@ -33,7 +38,7 @@ footer p {
     transition: var(--default-transition);
 }
 
-footer p i {
+footer p i, #minimalFooter i {
     font-size: 1.2rem;
     margin-right: 10px;
     transition: var(--default-transition);
@@ -49,16 +54,26 @@ footer p:hover {
     cursor: pointer;
 }
 
-footer p:hover i {
+footer p:hover i, #minimalFooter i:hover {
+    cursor: pointer;
     font-size: 1.5rem;
 }
 
-footer p:hover i.fa-gear {
+footer p:hover i.fa-gear, #minimalFooter i.fa-gear:hover {
     animation: settings-rotate 1.5s ease-in-out normal infinite;
 }
 
-footer p:hover i.fa-question, footer p:hover i.fa-star {
+footer p:hover i.fa-question, footer p:hover i.fa-star, #minimalFooter i.fa-question:hover {
     animation: pulse 1s ease-in-out alternate-reverse infinite;
+}
+
+footer #minimalFooter {
+    display: none;
+    align-items: center;
+}
+
+footer #minimalFooter i {
+    margin: 0 20px;
 }
 
 @keyframes settings-rotate {
