@@ -5,6 +5,8 @@ const scaleKeyboard = () => {
     if (width < 601) {
         let scale = (width / 600) * 1;
         keyboard.style.scale = scale;
+    } else {
+        keyboard.style.scale = '1';
     }
 }
 scaleKeyboard();
