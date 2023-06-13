@@ -394,8 +394,13 @@ const changeFooterButtonAppearance = () => {
 changeFooterButtonAppearance();
 
 const forceMinimalFooterOnLowWidth = () => {
-    if (window.innerWidth < 680) {
+    if (window.innerWidth < 750) {
         minimalFooterButton.click();
+        standardFooterButton.style.opacity = '0.5';
+        standardFooterButton.style.pointerEvents = 'none';
+    } else {
+        standardFooterButton.style.opacity = '1';
+        standardFooterButton.style.pointerEvents = 'all';
     }
 }
 forceMinimalFooterOnLowWidth();

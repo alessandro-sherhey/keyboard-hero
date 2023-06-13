@@ -15,6 +15,7 @@
     -webkit-backdrop-filter: blur(5px);
 
     z-index: 1;
+    overflow-y: auto;
 }
 
 #settings.open {
@@ -257,5 +258,50 @@
     
     #highFrequencyWarning p {
         color: white;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #settings div {
+        margin-bottom: 10px;
+    }
+
+    #colorPalette, #bot, #botFrequency, #customizeInterface, #footerSelection {
+        margin: 0 15px;
+    }
+
+    #colorPalette h3, #bot h3, #botFrequency h3, #customizeInterface h3, 
+    #footerSelection h3 {
+        margin-left: 5px;
+    }
+
+    #colorPalette button, #bot div button, #botFrequency div button,
+    #customizeInterface div button, #footerSelection div button, #closeSettingsButton {
+        margin: 0 5px;
+        font-size: var(--button-font-size-mobile);
+        padding: var(--button-padding-mobile);
+    }
+
+    #closeSettingsButton {
+        margin-top: 10px;
+    }
+
+    #colorPalette button div {
+        height: 30px;
+        width: 30px;
+        margin: 4px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #colorPalette div, #botFrequency div, #bot div, #customizeInterface div, 
+    #footerSelection div {
+        flex-direction: column;
+    }
+
+    #colorPalette button, #bot div button, #botFrequency div button,
+    #customizeInterface div button, #footerSelection div button, #closeSettingsButton {
+        margin: 5px 0;
+        justify-content: center;
     }
 }
