@@ -338,6 +338,7 @@ const standardFooter = document.getElementById("standardFooter");
 const minimalFooter = document.getElementById("minimalFooter");
 
 let footer = localStorage.getItem("footer"); // 1: standard, 2: minimal
+let oldFooter = localStorage.getItem("footer");
 
 standardFooterButton.addEventListener("click", () => {
     footer = 1;
@@ -391,3 +392,12 @@ const changeFooterButtonAppearance = () => {
     }
 }
 changeFooterButtonAppearance();
+
+const forceMinimalFooterOnLowWidth = () => {
+    if (window.innerWidth < 680) {
+        minimalFooterButton.click();
+    }
+}
+forceMinimalFooterOnLowWidth();
+
+window.addEventListener("resize", forceMinimalFooterOnLowWidth);
